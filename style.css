@@ -129,7 +129,7 @@ body {
 .container>.envelope-wrapper {
     background: var(--bg-envelope-color);
     box-shadow: 0 0 40px var(--shadow-color);
-     transform: translateY(-10px); /*  القيمة أكبر لرفع أكثر */
+     transform: translateY(100px); /*  القيمة أكبر لرفع أكثر */
   transition: transform 180ms ease;
 }
 
@@ -502,4 +502,5 @@ body {
   height: 100%;
   width: 0%;
   transition: width 0.1s linear;
+
 }
