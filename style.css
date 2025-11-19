@@ -1,0 +1,505 @@
+:root {
+    --primary: #ede0f5;
+    --bg-color: rgb(237, 221, 236);
+    --bg-envelope-color: #7c5e86;
+    --envelope-tab: #7c5e86;
+    --envelope-cover: #71557a;
+    --shadow-color: rgba(0, 0, 0, 0.2);
+    --txt-color: #4B1536;
+    --heart-color: rgba(186, 113, 162, 0);
+    --star-color: rgb(75, 21, 54);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background: var(--bg-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* طبقة النجوم الشفافة فوق الخلفية وتحت المحتوى */
+#stars {
+    position: fixed;
+    inset: 0;
+    /* top/right/bottom/left: 0 */
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* نضمن أن المحتوى فوق النجوم */
+.page {
+    position: relative;
+    z-index: 1;
+}
+
+/* Subtle floating particles with professional colors */
+.particles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.particle {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: rgba(148, 163, 184, 0.4);
+    border-radius: 50%;
+    animation: float 12s infinite linear;
+}
+
+
+.particle:nth-child(1) {
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.particle:nth-child(2) {
+    left: 20%;
+    animation-delay: 2s;
+}
+
+.particle:nth-child(3) {
+    left: 30%;
+    animation-delay: 4s;
+}
+
+.particle:nth-child(4) {
+    left: 40%;
+    animation-delay: 6s;
+}
+
+.particle:nth-child(5) {
+    left: 50%;
+    animation-delay: 8s;
+}
+
+.particle:nth-child(6) {
+    left: 60%;
+    animation-delay: 3s;
+}
+
+.particle:nth-child(7) {
+    left: 70%;
+    animation-delay: 5s;
+}
+
+.particle:nth-child(8) {
+    left: 80%;
+    animation-delay: 7s;
+}
+
+.particle:nth-child(9) {
+    left: 90%;
+    animation-delay: 1s;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 0.6;
+    }
+
+    90% {
+        opacity: 0.6;
+    }
+
+    100% {
+        transform: translateY(-100px) rotate(180deg);
+        opacity: 0;
+    }
+}
+
+.container {
+    height: 100vh;
+    display: grid;
+    place-items: center;
+}
+
+.container>.envelope-wrapper {
+    background: var(--bg-envelope-color);
+    box-shadow: 0 0 40px var(--shadow-color);
+     transform: translateY(-10px); /*  القيمة أكبر لرفع أكثر */
+  transition: transform 180ms ease;
+}
+
+.envelope-wrapper>.envelope {
+    position: relative;
+    width: 300px;
+    height: 230px;
+}
+
+.envelope-wrapper>.envelope::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    z-index: 2;
+    border-top: 140px solid var(--envelope-tab);
+    border-right: 150px solid transparent;
+    border-left: 150px solid transparent;
+    transform-origin: top;
+    transition: all 0.5s ease-in-out 0.7s;
+    overflow: hidden;
+}
+
+.envelope-wrapper>.envelope::after {
+    content: "";
+    position: absolute;
+    z-index: 2;
+    width: 0px;
+    height: 0px;
+    border-top: 130px solid transparent;
+    border-right: 150px solid var(--envelope-cover);
+    border-bottom: 100px solid var(--envelope-cover);
+    border-left: 150px solid var(--envelope-cover);
+}
+
+.envelope>.letter {
+    position: absolute;
+    right: 22%;
+    bottom: 6%;
+    width: 54%;
+    height: 80%;
+    background: var(--primary);
+    text-align: center;
+    transition: all 1s ease-in-out;
+    box-shadow: 0 0 5px var(--shadow-color);
+    padding: 20px 10px;
+    direction: rtl;
+    text-align: right;
+    transform: translateY(var(--y, -0px));
+}
+
+.envelope>.letter>.text {
+    /*font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;*/
+    font-family: "Playpen Sans Arabic", cursive;
+    font-optical-sizing: auto;
+    font-weight: 100px;
+    font-style: normal;
+    color: var(--txt-color);
+    text-align: right;
+    font-size: 9px;
+      transform: translateY(var(--y, -10px));
+}
+
+.envelope > .letter> .text strong {
+  font-weight: 500;
+  font-size: 10px;
+  color: var(--text-color);
+  line-height: 1.15;
+  letter-spacing: 0;
+   position: absolute;
+  left: 50%;
+  top: 125%;
+  transform: translate(-50%, -50%);
+}
+
+.heart {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0px;
+    height: 0px;
+    background: var(--heart-color);
+    z-index: 4;
+    transform: translate(-50%, -20%) rotate(45deg);
+    transition: transform 0.5s ease-in-out 1s;
+    box-shadow: 0 1px 6px var(--shadow-color);
+    cursor: pointer;
+}
+
+.heart>img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 60px;
+    height: 60px;
+    z-index: 4;
+    transform: translate(-50%, -50%) rotate(330deg);
+    transition: transform 0.5s ease-in-out 1s;
+    box-shadow: 0 1px 6px var(--shadow-color);
+    cursor: pointer;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.heart:before,
+.heart:after {
+    content: "";
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background-color: var(--heart-color);
+    border-radius: 50%;
+}
+
+.heart:before {
+    top: -7.5px;
+}
+
+.heart:after {
+    right: 7.5px;
+}
+
+.flap>.envelope:before {
+    transform: rotateX(180deg);
+    z-index: 0;
+}
+
+.flap>.envelope>.letter {
+    bottom: 100px;
+    transform: scale(1.5);
+    transition-delay: 1s;
+}
+
+.flap>.heart {
+    transform: rotate(90deg);
+    transition-delay: 0.4s;
+}
+
+
+/* حاوية عامة للنقوش النصية */
+.envelope .text-ornaments{
+  position: absolute;
+  top: 10px;               /*  لوضعها أسفل أو أعلى */
+  right: 190px;              /*  أفقيًا */
+  width: 240px;
+  pointer-events: none;
+  z-index: 9;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: flex-end;
+  transform: rotate(45deg); /* ميل خفيف طبيعي */
+}
+
+/* قاعدة عامة لكل نقش */
+.envelope .text-ornaments .orn {
+  font-family: "Playpen Sans Arabic", "Segoe UI Symbol", system-ui, serif;
+  font-weight: 400;
+  line-height: 1;
+  white-space: nowrap;
+  pointer-events: none;
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transform-origin: center;
+}
+
+/* حالات جاهزة لإعادة الاستخدام */
+.state-default {
+  color: rgba(255,255,255,0.95);
+  font-size: 14px;
+  text-shadow:
+    0 0 6px rgba(255,255,255,0.85),
+    0 1px 0 rgba(0,0,0,0.14);
+  mix-blend-mode: screen;
+  opacity: 0.98;
+}
+
+.state-dim {
+  color: rgba(230,230,235,0.72);
+  font-size: 13px;
+  text-shadow: 0 0 4px rgba(200,200,210,0.25), 0 1px 0 rgba(0,0,0,0.18);
+  opacity: 0.72;
+  mix-blend-mode: multiply;
+}
+
+.state-bright {
+  color: rgba(255,250,220,0.98);
+  font-size: 15px;
+  text-shadow:
+    0 0 10px rgba(255,245,180,0.7),
+    0 1px 0 rgba(0,0,0,0.14);
+  opacity: 1;
+  mix-blend-mode: screen;
+}
+
+/* فئات محددة لكل شكل —  تعديل المواضع/الحجوم بشكل مستقل */
+.envelope .orn-star1 { font-size: 12px; transform: translateY(-2px) scale(0.98); opacity: 0.92; }
+.envelope .orn-moon  { font-size: 15px; transform: translateX(-2px) scale(1.02); opacity: 0.86; }
+.envelope .orn-spark { font-size: 11px; transform: translateY(2px) scale(0.96); opacity: 0.9; }
+.envelope .orn-diamond { font-size: 13px; transform: translateX(-4px) scale(1); opacity: 0.95; }
+.envelope .orn-sun { font-size: 16px; transform: translateY(0) scale(1.03); opacity: 1; }
+
+/* حركات لامعة ونعومة قابلة لإعادة الاستخدام */
+@keyframes softTwinkle {
+  0%   { opacity: 1; transform: translateY(0) scale(1); filter: drop-shadow(0 0 6px rgba(255,255,255,0.12)); }
+  50%  { opacity: 0.45; transform: translateY(-1px) scale(0.995); filter: drop-shadow(0 0 2px rgba(255,255,255,0.08)); }
+  100% { opacity: 1; transform: translateY(0) scale(1); filter: drop-shadow(0 0 6px rgba(255,255,255,0.12)); }
+}
+
+@keyframes slowPulse {
+  0%   { opacity: 1; transform: translateY(0) scale(1); }
+  50%  { opacity: 0.6; transform: translateY(-0.8px) scale(0.997); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* تطبيق الحركة على فئات مناسبة */
+.envelope .orn-star1,
+.envelope .orn-diamond,
+.envelope .orn-spark { animation: softTwinkle 3.4s ease-in-out infinite; }
+.envelope .orn-sun,
+.envelope .orn-moon { animation: slowPulse 4.8s ease-in-out infinite; }
+
+
+
+/* سهولة التخصيص: أمثلة تغيير اللون/سطوع لكل حالة */
+/* .state-default     { color: #fff; } */
+/* .state-dim         { color: rgba(200,200,210,0.75); } */
+/* .state-bright      { color: #fff7d6; } */
+
+@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-image: linear-gradient(
+    0deg,
+    rgba(124, 94, 134, 0.548) 23.8%,
+    rgb(237, 221, 236, 1) 92%
+  );
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Lato', sans-serif;
+  margin: 0;
+}
+
+.music-container {
+  background-color: #ede0f5;
+  border-radius: 15px;
+  box-shadow: 0 20px 20px 0 rgb(237, 221, 236, 0.6);
+  display: flex;
+  padding: 20px 30px;
+  position: relative;
+  margin: 100px 0;
+  z-index: 10;
+   transform: translateY(-120px); /*  القيمة أكبر لرفع أكثر */
+  transition: transform 180ms ease;
+  color: #71557a;
+}
+
+.img-container {
+  position: relative;
+  width: 110px;
+}
+
+.img-container::after {
+  content: '';
+  background-color: #ede0f500;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  transform: translate(-50%, 50%);
+}
+
+.img-container img {
+  border-radius: 50%;
+  object-fit: cover;
+  height: 110px;
+  width: inherit;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  animation: rotate 3s linear infinite;
+
+  animation-play-state: paused;
+}
+
+.music-container.play .img-container img {
+  animation-play-state: running;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.navigation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.action-btn {
+  background-color: #ede0f5;
+  border: 0;
+  color: #71557a;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 10px;
+  margin: 0 20px;
+}
+
+.action-btn.action-btn-big {
+  color: #71557a;
+  font-size: 30px;
+}
+
+.action-btn:focus {
+  outline: 0;
+}
+
+.music-info {
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 15px 15px 0 0;
+  position: absolute;
+  top: 0;
+  left: 20px;
+  width: calc(100% - 40px);
+  padding: 10px 10px 10px 150px;
+  opacity: 0;
+  transform: translateY(0%);
+  transition: transform 0.3s ease-in, opacity 0.3s ease-in;
+  z-index: 0;
+}
+
+.music-container.play .music-info {
+  opacity: 1;
+  transform: translateY(-100%);
+}
+
+.music-info h4 {
+  margin: 0;
+}
+
+.progress-container {
+  background: #ede0f5;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 10px 0;
+  height: 4px;
+  width: 100%;
+}
+
+.progress {
+  background-color: #71557a;
+  border-radius: 5px;
+  height: 100%;
+  width: 0%;
+  transition: width 0.1s linear;
+}

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ar">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-comatible" content="IE-edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>R</title>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playpen+Sans+Arabic:wght@100..800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css">
+</head>
+
+<body>
+  <canvas id="stars"></canvas>
+
+  <div class="container">
+    <div class="envelope-wrapper flap">
+      <div class="envelope">
+        <div class="letter">
+          <div class="text">
+            <p> ألف الحمد لله على سلامتك يا ريماس،
+              طهور إن شاء الله، وجعل الله ما مررتِ به خيرًا وعافية.
+              فرحنا كثير بسلامتك، ونسأل الله أن يتم عليك الصحة ويطيل عمرك بخير وسعادة.
+            </p>
+            <strong> من عائلتك الثانية</strong>
+          </div>
+        </div>
+
+        <div class="text-ornaments" aria-hidden="true">
+          <span class="orn orn-moon state-dim">⋆⁺₊⋆✧⋆⭒˚.⋆☾⋆⁺₊✧</span>
+          <span class="orn orn-spark state-bright">⋆⁺₊✧⋆⁺₊⋆✩₊°.⋆₊ ⊹ ✧˖</span>
+          <span class="orn orn-sun state-default">⋆⁺₊⋆ ☀︎ ⋆⁺₊⋆</span>
+        </div>
+      </div>
+
+      <div class="heart">
+        <img src="images/R.svg" alt="ختم" id="ختم">
+      </div>
+    </div>
+  </div>
+
+  <div class="music-container" id="music-container">
+    <div class="music-info">
+      <h4 id="title"></h4>
+      <div class="progress-container" id="progress-container">
+        <div class="progress" id="progress"></div>
+      </div>
+    </div>
+
+    <audio src="music/ukulele.mp3" id="audio"></audio>
+
+    <div class="img-container">
+      <img src="images/☾.jpg" alt="music-cover" id="cover">
+    </div>
+    <div class="navigation">
+      <button id="prev" class="action-btn">
+        <i class="fas fa-backward"></i>
+      </button>
+      <button id="play" class="action-btn action-btn-big">
+        <i class="fas fa-play"></i>
+      </button>
+      <button id="next" class="action-btn">
+        <i class="fas fa-forward"></i>
+      </button>
+    </div>
+  </div>
+
+  <script src="script.js" defer></script>
+</body>
+
+</html>
